@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AEC AI Platform</title>
+<style>
+body{font-family:Arial,sans-serif;margin:0;background:#f6f8fc;color:#172033}.nav{background:#111827;color:#fff;padding:16px 24px}.wrap{max-width:1100px;margin:30px auto;padding:0 20px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:#fff;padding:20px;border:1px solid #e4e8ef;border-radius:12px}.metric{font-size:28px;font-weight:700;margin-top:8px}.muted{color:#6b7280;font-size:13px}.btn{background:#315efb;color:white;border:0;padding:10px 14px;border-radius:8px;cursor:pointer}@media(max-width:800px){.grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="nav"><b>AEC AI QA Platform</b></div>
+<div class="wrap">
+<h1>Project QA Dashboard</h1>
+<p class="muted">Phase 1 working application shell</p>
+<div class="grid">
+<div class="card">Elements Checked<div class="metric">48,392</div></div>
+<div class="card">Rules<div class="metric">126</div></div>
+<div class="card">Critical<div class="metric">239</div></div>
+<div class="card">Pass Rate<div class="metric">94.7%</div></div>
+</div>
+<div class="card" style="margin-top:20px"><h2>Backend status</h2><p id="status">Checking...</p><button class="btn" onclick="check()">Check API</button></div>
+</div>
+<script>
+async function check(){try{const r=await fetch('http://localhost:8000/health');const j=await r.json();document.getElementById('status').textContent=j.status.toUpperCase()}catch(e){document.getElementById('status').textContent='BACKEND UNAVAILABLE'}}
+check();
+</script>
+</body>
+</html>
